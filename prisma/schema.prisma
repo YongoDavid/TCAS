@@ -1,0 +1,30 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Inquiry {
+  id                  String   @id @default(cuid())
+  name                String
+  phone               String
+  email               String?
+  vehicle_make        String
+  vehicle_model       String
+  vehicle_year        String
+  asking_price        String?
+  dealer_location     String?
+  vin                 String?
+  additional_info     String?
+  contact_preference  String   @default("whatsapp")
+  status              String   @default("pending")
+  submitted_at        DateTime @default(now())
+  created_at          DateTime @default(now())
+  updated_at          DateTime @updatedAt
+
+  @@index([status])
+  @@index([submitted_at])
+}
