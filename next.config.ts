@@ -4,10 +4,10 @@ const nextConfig: NextConfig = {
   images: {
     domains: ['images.unsplash.com'],
   },
-  experimental: {
-    serverActions: true,
-  },
+  // Remove or adjust experimental flags to match the installed Next.js types.
+  // experimental: {
+  //   serverActions: true,
+  // },
 };
 
 export default nextConfig;
-
