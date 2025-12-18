@@ -11,7 +11,13 @@ export async function POST(request: NextRequest) {
     const validatedData = inquirySchema.parse(body)
     
     // Create inquiry in database
-    const inquiry = await prisma.inquiry.create({
+    // const inquiry = await prisma.inquiry.create({
+    //   data: {
+    //     ...validatedData,
+    //     submitted_at: new Date(),
+    //   },
+    // })
+    const inquiry = await prisma.inquiry.findMany({
       data: {
         ...validatedData,
         submitted_at: new Date(),
