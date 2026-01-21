@@ -19,6 +19,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark">
+      <head>
+        {/* Load Google reCAPTCHA v3 if site key is provided */}
+        {process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && (
+          <script src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`} async />
+        )}
+      </head>
       <body className={inter.className}>
         <Header />
         <main className="pt-16 lg:pt-20">{children}</main>

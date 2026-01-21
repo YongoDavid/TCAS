@@ -41,12 +41,23 @@ export default function InquiryForm() {
     setIsSubmitting(true)
     
     try {
+        // Acquire reCAPTCHA v3 token if grecaptcha is available
+        const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ''
+        let recaptchaToken = ''
+        if (siteKey && typeof window !== 'undefined' && (window as any).grecaptcha) {
+          try {
+            recaptchaToken = await (window as any).grecaptcha.execute(siteKey, { action: 'inquiry_submit' })
+          } catch (err) {
+            console.warn('grecaptcha.execute failed', err)
+          }
+        }
+        const payload = { ...data, recaptchaToken }
       const response = await fetch('/api/inquiry', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(data),
+          body: JSON.stringify(payload),
       })
 
       if (!response.ok) {

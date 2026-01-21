@@ -34,3 +34,13 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+TASKS
+Use Redis for rate limit.
+Google reCAPTCHA ( MIN_SCORE of 0.5; you can tweak that via RECAPTCHA_MIN_SCORE.)
+
+GET STARTED WITH :
+setup MongoDB
+Setup sendGrid
+setup Rate limit (REDIS), set REDIS_URL in production,
+setup reCAPTCHA v3
